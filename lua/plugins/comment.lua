@@ -2,7 +2,7 @@ return {
 	"numToStr/Comment.nvim",
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
-		-- plugin to allow us to automatically comment ts elements with the comment plugin
+		-- plugin to allow us to automatically comment treesitter elements with the comment plugin
 		"JoosepAlviste/nvim-ts-context-commentstring",
 	},
 	config = function()

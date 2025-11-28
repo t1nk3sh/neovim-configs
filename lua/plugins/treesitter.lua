@@ -1,36 +1,25 @@
-return { -- Highlight, edit, and navigate code
-	"nvim-treesitter/nvim-treesitter",
-	build = ":TSUpdate",
-	main = "nvim-treesitter.configs", -- Sets main module to use for opts
-	-- [[ Configure Treesitter ]] See `:help nvim-treesitter`
-	opts = {
-		ensure_installed = {
-			"lua",
-			"vimdoc",
-			"vim",
-			"regex",
-			"gitignore",
-			"make",
-			"cmake",
-			"markdown",
-			"markdown_inline",
-			"bash",
-		},
-		-- Autoinstall languages that are not installed
-		auto_install = true,
-		highlight = {
-			enable = true,
-			-- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
-			--  If you are experiencing weird indenting issues, add the language to
-			--  the list of additional_vim_regex_highlighting and disabled languages for indent.
-			additional_vim_regex_highlighting = { "ruby" },
-		},
-		indent = { enable = true, disable = { "ruby" } },
-	},
-	-- There are additional nvim-treesitter modules that you can use to interact
-	-- with nvim-treesitter. You should go explore a few and see what interests you:
-	--
-	--    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
-	--    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
-	--    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+return {
+    "nvim-treesitter/nvim-treesitter",
+    dependencies = {
+        -- ts-autotag utilizes treesitter to understand the code structure to automatically close ts tags
+        "windwp/nvim-ts-autotag"
+    },
+    -- when the plugin builds run the TSUpdate command to ensure all our servers are installed and updated
+    build = ':TSUpdate',
+    config = function()
+        -- gain access to the treesitter config functions
+        local ts_config = require("nvim-treesitter.configs")
+
+        -- call the treesitter setup function with properties to configure our experience
+        ts_config.setup({
+            -- make sure we have vim, vimdoc, lua, java, javascript, typescript, html, css, json, tsx, markdown, markdown, inline markdown and gitignore highlighting servers
+            ensure_installed = {"vim", "vimdoc", "lua", "css", "json", "markdown", "markdown_inline", "gitignore"},
+            -- make sure highlighting it anabled
+            highlight = {enable = true},
+            -- enable treesitter auto closing tag creation
+            autotag = {
+                enable = true
+            }
+        })
+    end
 }
