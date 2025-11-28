@@ -23,6 +23,11 @@ return {
 			vim.cmd([[colorscheme nord]])
 		end
 
-		vim.keymap.set("n", "<leader>bg", toggle_transparency, { noremap = true, silent = true })
+		vim.keymap.set(
+			"n",
+			"<leader>bg",
+			toggle_transparency,
+			{ noremap = true, silent = true, desc = "Toggle background transparency" }
+		)
 	end,
 }
