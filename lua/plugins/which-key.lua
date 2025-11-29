@@ -11,6 +11,9 @@ return {
 			{ "<leader>/", group = "Comments" },
 			{ "<leader>/_", hidden = true },
 
+			{ "<leader>b", group = "[B]uffer"},
+			{ "<leader>b_", hidden = true},
+
 			{ "<leader>c", group = "[C]ode" },
 			{ "<leader>c_", hidden = true },
 
