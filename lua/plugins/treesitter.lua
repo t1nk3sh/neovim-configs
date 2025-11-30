@@ -12,7 +12,7 @@ return {
 
         -- call the treesitter setup function with properties to configure our experience
         ts_config.setup({
-            -- make sure we have vim, vimdoc, lua, java, javascript, typescript, html, css, json, tsx, markdown, markdown, inline markdown and gitignore highlighting servers
+            -- make sure we have vim, vimdoc, lua, css, json, markdown, markdown, inline markdown and gitignore highlighting servers
             ensure_installed = {"vim", "vimdoc", "lua", "css", "json", "markdown", "markdown_inline", "gitignore"},
             -- make sure highlighting it anabled
             highlight = {enable = true},
